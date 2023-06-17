@@ -11,7 +11,7 @@ class Solution {
 
         for(int num: numbers){
             if(intList.contains(num)){
-                intList.remove(Integer.valueOf(num));
+                intList.remove(intList.indexOf(num));
             }
         }
         answer = 0;
