@@ -11,12 +11,7 @@ class Solution {
         }
 
         int count = 0;
-        Object[] arr = map.values().toArray();
-        for(int i=0;i<arr.length;i++){
-            if((Integer)arr[i] > count){
-                count = (Integer)arr[i];
-            }
-        }
+        count = Collections.max(map.values());
 
         answer = count;
         return answer;
