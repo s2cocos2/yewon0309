@@ -7,7 +7,9 @@ class Solution {
         Map<Integer, Integer> map = new HashMap<>();
 
         for(int i=0;i<strArr.length;i++){
-            map.put(strArr[i].length(), map.getOrDefault(strArr[i].length(), 0)+1);
+            int key = strArr[i].length();
+            int value = map.getOrDefault(key, 0) + 1;
+            map.put(key, value);
         }
 
         int count = 0;
