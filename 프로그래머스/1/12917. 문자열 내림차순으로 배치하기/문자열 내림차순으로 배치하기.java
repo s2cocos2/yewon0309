@@ -3,7 +3,7 @@ import java.util.*;
 class Solution {
     public String solution(String s) {
         String answer = "";
-        String[] str;
+        String[] str = new String[s.length()];
 
         List<String> list = new ArrayList<>();
 
