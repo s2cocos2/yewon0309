@@ -5,7 +5,7 @@ class Solution {
         int answer = 0;
         List<Integer> list = new ArrayList<>();
         for(int i=0;i< rank.length;i++){
-            if(attendance[i] == true){
+            if(attendance[i]){
                 list.add(rank[i]);
             }
         }
