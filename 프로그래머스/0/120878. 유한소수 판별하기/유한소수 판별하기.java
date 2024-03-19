@@ -2,9 +2,7 @@ import java.util.*;
 
 class Solution {
     public int solution(int a, int b) {
-        int finalB = b / GCD(a, b);
         int answer = 1;
-
         int B = b / GCD(a, b);
 
         while (B != 1){
