@@ -3,18 +3,22 @@ import java.util.*;
 class Solution {
     public int solution(int a, int b) {
         int finalB = b / GCD(a, b);
-        
-        while( finalB != 1) {
-            if(finalB % 2 == 0) {
-                finalB /= 2;
-            }else if (finalB % 5 == 0) {
-                finalB /= 5;
-            }else {
-                return 2;
+        int answer = 1;
+
+        int B = b / GCD(a, b);
+
+        while (B != 1){
+            if(B % 2== 0){
+                B /= 2;
+            } else if(B % 5 == 0){
+                B /= 5;
+            } else {
+                answer = 2;
+                break;
             }
         }
         
-        return 1;
+        return answer;
     }
 
     private int GCD(int a, int b) {
