@@ -16,7 +16,6 @@ class Solution {
             if(arr[i] == 2) two = i;
             if(arr[i] == 3) three = i;
             if(arr[i] == 4) four = i;
-            max = Math.max(max, arr[i]);
         }
 
 
