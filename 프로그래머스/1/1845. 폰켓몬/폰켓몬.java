@@ -8,12 +8,7 @@ class Solution {
             set.add(nums[i]);
         }
 
-        int count = nums.length / 2;
-        if(count < set.size()){
-            answer = count;
-        } else {
-            answer = set.size();
-        }
+        answer = Math.min(nums.length / 2, set.size());
         return answer;
     }
 }
