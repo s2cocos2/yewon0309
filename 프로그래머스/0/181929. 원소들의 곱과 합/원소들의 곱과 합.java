@@ -9,7 +9,7 @@ class Solution {
             sum += num_list[i];
         }
 
-        if(multi < sum * sum){
+        if(multi < Math.pow(sum, 2)){
             answer = 1;
         } else {
             answer = 0;
