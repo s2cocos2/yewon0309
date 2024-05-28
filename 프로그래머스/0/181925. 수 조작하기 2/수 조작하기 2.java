@@ -1,24 +1,17 @@
 class Solution {
     public String solution(int[] numLog) {
-        StringBuilder answer = new StringBuilder();
-        for(int i = 1; i < numLog.length; i++) {
-            int diff = numLog[i] - numLog[i - 1];
-            switch(diff) {
-                case 1:
-                    answer.append("w");
-                    break;
-                case -1:
-                    answer.append("s");
-                    break;
-                case 10:
-                    answer.append("d");
-                    break;
-                case -10:
-                    answer.append("a");
-                    break;
+        String answer = "";
+        for(int i=0;i<numLog.length-1;i++){
+            if(numLog[i+1] - numLog[i] == 1){
+                answer += "w";
+            } else if(numLog[i+1] - numLog[i] == -1){
+                answer += "s";
+            } else if(numLog[i+1] - numLog[i] == 10){
+                answer += "d";
+            } else {
+                answer += "a";
             }
         }
-        return answer.toString();
+        return answer;
     }
 }
-//
