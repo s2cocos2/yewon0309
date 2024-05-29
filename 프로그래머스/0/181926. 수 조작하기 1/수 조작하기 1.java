@@ -1,37 +1,24 @@
 class Solution {
     public int solution(int n, String control) {
-        Direction d = new Direction();
-        long wCount = control.chars().filter(c -> c == 'w').count();
-        long sCount = control.chars().filter(c -> c == 's').count();
-        long dCount = control.chars().filter(c -> c == 'd').count();
-        long aCount = control.chars().filter(c -> c == 'a').count();
-        for(int i =0; i <= wCount; i++){
-            n = d.wDirection(n);
+        int answer = 0;
+        char[] c = new char[control.length()];
+        for(int i=0;i<control.length();i++){
+            c[i] = control.charAt(i);
         }
-        for(int i =0; i <= sCount; i++){
-            n = d.sDirection(n);
-        }
-        for(int i =0; i <= dCount; i++){
-            n = d.dDirection(n);
-        }
-        for(int i =0; i <= aCount; i++){
-            n = d.aDirection(n);
-        }
-        return n;
-    }
-}
 
-class Direction{
-    public int wDirection(int n){
-        return n+1;
-    }
-    public int sDirection(int n){
-        return n-1;
-    }
-    public int dDirection(int n){
-        return n+ 10;
-    }
-    public int aDirection(int n){
-        return n-10;
+        for(int i=0;i<c.length;i++){
+            if(c[i] == 'w'){
+                n += 1;
+            } else if(c[i] == 's'){
+                n -= 1;
+            } else if(c[i] == 'd'){
+                n += 10;
+            } else {
+                n -= 10;
+            }
+        }
+        
+        answer = n;
+        return answer;
     }
 }
