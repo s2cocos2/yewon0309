@@ -8,8 +8,8 @@ class Solution {
             String iStr = String.valueOf(i);
             boolean b = true;
             for(int j=0;j<iStr.length();j++){
-                char c = iStr.charAt(j);
-                if(c != '0' && c != '5'){
+                // char c = iStr.charAt(j);
+                if(iStr.charAt(j) != '0' && iStr.charAt(j) != '5'){
                     b = false;
                     break;
                 }
