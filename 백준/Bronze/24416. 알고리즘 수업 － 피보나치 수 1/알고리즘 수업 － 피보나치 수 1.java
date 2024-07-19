@@ -31,6 +31,6 @@ class Main {
             f[i] = f[i - 1] + f[i - 2];
             countFibonacci++;
         }
-        return f[n-1];
+        return f[n];
     }
 }
