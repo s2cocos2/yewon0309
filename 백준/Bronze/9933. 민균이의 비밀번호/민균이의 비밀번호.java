@@ -9,23 +9,21 @@ class Main {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
 
-        List<String> list = new ArrayList<>();
-        for(int i=0;i<N;i++){
-            list.add(br.readLine());
-        }
-
         String answer = " ";
-        for(int i=0;i<list.size();i++){
-            StringBuilder sb = new StringBuilder();
-            sb.append(list.get(i));
-            String strReverse = sb.reverse().toString();
+        HashSet<String> set = new HashSet<>();
+        for(int i=0;i<N;i++){
+            String str = br.readLine();
+            set.add(str);
 
-            for(int j=0;j<list.size();j++){
-                if(list.contains(strReverse)){
-                    answer = list.get(i);
-                }
+            StringBuilder sb = new StringBuilder(str);
+            String sbReverse = sb.reverse().toString();
+
+            if(set.contains(sbReverse)){
+                answer = sbReverse;
+                break;
             }
         }
+
 
         int length = answer.length();
         char c = answer.charAt(length/2);
