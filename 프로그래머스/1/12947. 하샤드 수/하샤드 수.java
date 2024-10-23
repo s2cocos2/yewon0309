@@ -1,13 +1,13 @@
-class Solution {
+public class Solution {
     public boolean solution(int x) {
-        int sum = 0;
-        int original = x;
+        int sumOfDigits = 0;
+        int temp = x;
 
-        while (x > 0) {
-            sum += x % 10;
-            x /= 10;
+        while (temp > 0) {
+            sumOfDigits += temp % 10;
+            temp /= 10;
         }
 
-        return (original % sum == 0);
+        return x % sumOfDigits == 0;
     }
 }
