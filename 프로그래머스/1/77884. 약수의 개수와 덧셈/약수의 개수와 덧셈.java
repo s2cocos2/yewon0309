@@ -1,13 +1,20 @@
-class Solution {
+public class Solution {
     public int solution(int left, int right) {
-        int answer = 0;
-        for(int i=left;i<=right;i++){
-            if(Math.sqrt(i) == (int)Math.sqrt(i)){
-                answer -= i;
+        int result = 0;
+        
+        for (int i = left; i <= right; i++) {
+            if (isSquareNumber(i)) {
+                result -= i;
             } else {
-                answer += i;
+                result += i;
             }
         }
-        return answer;
+        
+        return result;
+    }
+    
+    private boolean isSquareNumber(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
     }
 }
