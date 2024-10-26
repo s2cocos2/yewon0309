@@ -4,9 +4,8 @@ public class Solution {
         
         for (int i = left; i <= right; i++) {
             if (isSquareNumber(i)) {
-                result -= i;
-            } else {
-                result += i;
+                result -= i;} else 
+            {result += i;
             }
         }
         
