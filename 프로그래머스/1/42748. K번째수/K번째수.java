@@ -1,15 +1,20 @@
-import java.util.*;
+import java.util.Arrays;
 
-class Solution {
+public class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        List<Integer> list = new ArrayList<>();
-        for(int i=0;i<commands.length;i++){
-            int[] arr = Arrays.copyOfRange(array, commands[i][0]-1, commands[i][1]);
-            Arrays.sort(arr);
-            list.add(arr[commands[i][2]-1]);
-        }
+        int[] result = new int[commands.length];
+        
+        for (int idx = 0; idx < commands.length; idx++) {
+            int i = commands[idx][0];
+            int j = commands[idx][1];
+            int k = commands[idx][2];
 
-        int[] answer = list.stream().mapToInt(Integer::intValue).toArray();
-        return answer;
+            int[] slicedArray = Arrays.copyOfRange(array, i - 1, j);
+            Arrays.sort(slicedArray);
+            
+            result[idx] = slicedArray[k - 1];
+        }
+        
+        return result;
     }
 }
