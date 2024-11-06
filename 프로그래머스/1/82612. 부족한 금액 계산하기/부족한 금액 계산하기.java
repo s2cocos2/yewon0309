@@ -1,15 +1,7 @@
 public class Solution {
     public long solution(int price, int money, int count) {
-        long totalCost = 0;
+        long totalCost = (long) price * count * (count + 1) / 2;
         
-        for (int i = 1; i <= count; i++) {
-            totalCost += price * i;
-        }
-
-        if (totalCost > money) {
-            return totalCost - money;
-        } else {
-            return 0;
-        }
+        return Math.max(totalCost - money, 0);
     }
 }
