@@ -1,30 +1,28 @@
-import java.util.*;
+import java.util.PriorityQueue;
+import java.util.Collections;
 
-class Solution {
+public class Solution {
     public int solution(int n, int k, int[] enemy) {
-        int answer = 0;
-        PriorityQueue<Integer> pq = new PriorityQueue<>(Collections.reverseOrder());
+        PriorityQueue<Integer> maxHeap = new PriorityQueue<>(Collections.reverseOrder());
+        int roundCount = 0;
 
-        for (int i=0; i<enemy.length;i++) {
+        for (int i = 0; i < enemy.length; i++) {
+            maxHeap.add(enemy[i]);
+
             n -= enemy[i];
-            pq.add(enemy[i]);
 
-            if (n<0) {
-                if (k > 0 && !pq.isEmpty()) {
-                    n += pq.poll();
+            if (n < 0) {
+                if (k > 0 && !maxHeap.isEmpty()) {
+                    n += maxHeap.poll();
                     k--;
                 } else {
-                    answer = i;
-                    break;
+
+                    return roundCount;
                 }
             }
-        }
-        
-        if (n >= 0) {
-            answer = enemy.length;
+            roundCount++;
         }
 
-
-        return answer;
+        return roundCount;
     }
 }
