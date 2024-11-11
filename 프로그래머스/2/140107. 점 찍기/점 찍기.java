@@ -1,10 +1,14 @@
-class Solution {
+public class Solution {
     public long solution(int k, int d) {
-        long answer = 0;
-        for(int x=0; x<=d; x+=k){
-            int max = (int)Math.sqrt((long)d*d - (long)x*x);
-            answer += max / k + 1;
+        long count = 0;
+        long dSquared = (long) d * d;
+
+        for (long x = 0; x <= d; x += k) {
+            long maxY = (long) Math.sqrt(dSquared - x * x);
+            count += (maxY / k) + 1;
         }
-        return answer;
+
+        return count;
     }
 }
+//
