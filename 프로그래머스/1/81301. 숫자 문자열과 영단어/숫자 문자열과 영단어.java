@@ -1,18 +1,24 @@
+import java.util.HashMap;
+import java.util.Map;
+
 class Solution {
     public int solution(String s) {
-        int answer = 0;
-        s = s.replaceAll("zero", "0");
-        s = s.replaceAll("one", "1");
-        s = s.replaceAll("two", "2");
-        s = s.replaceAll("three", "3");
-        s = s.replaceAll("four", "4");
-        s = s.replaceAll("five", "5");
-        s = s.replaceAll("six", "6");
-        s = s.replaceAll("seven", "7");
-        s = s.replaceAll("eight", "8");
-        s = s.replaceAll("nine", "9");
+        Map<String, String> numberWords = new HashMap<>();
+        numberWords.put("zero", "0");
+        numberWords.put("one", "1");
+        numberWords.put("two", "2");
+        numberWords.put("three", "3");
+        numberWords.put("four", "4");
+        numberWords.put("five", "5");
+        numberWords.put("six", "6");
+        numberWords.put("seven", "7");
+        numberWords.put("eight", "8");
+        numberWords.put("nine", "9");
 
-        answer = Integer.parseInt(s);
-        return answer;
+        for (Map.Entry<String, String> entry : numberWords.entrySet()) {
+            s = s.replaceAll(entry.getKey(), entry.getValue());
+        }
+
+        return Integer.parseInt(s);
     }
 }
