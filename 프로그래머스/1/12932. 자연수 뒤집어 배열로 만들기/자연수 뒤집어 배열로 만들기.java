@@ -1,14 +1,15 @@
 import java.util.ArrayList;
+import java.util.List;
 
 class Solution {
     public int[] solution(long n) {
-        String numStr = Long.toString(n);
-        int[] result = new int[numStr.length()];
-
-        for (int i = 0; i < numStr.length(); i++) {
-            result[i] = numStr.charAt(numStr.length() - 1 - i) - '0';
+        List<Integer> digits = new ArrayList<>();
+        
+        while (n > 0) {
+            digits.add((int) (n % 10));
+            n /= 10;                  
         }
-
-        return result;
+        
+        return digits.stream().mapToInt(Integer::intValue).toArray();
     }
 }
