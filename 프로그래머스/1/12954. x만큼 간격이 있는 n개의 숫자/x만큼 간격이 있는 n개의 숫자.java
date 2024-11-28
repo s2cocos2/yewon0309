@@ -1,12 +1,9 @@
-import java.util.ArrayList;
-import java.util.List;
-
-public class Solution {
-    public List<Long> solution(int x, int n) {
-        List<Long> result = new ArrayList<>();
-
-        for (int i = 1; i <= n; i++) {
-            result.add((long) x * i);
+class Solution {
+    public long[] solution(int x, int n) {
+        long[] result = new long[n];
+        
+        for (int i = 0; i < n; i++) {
+            result[i] = (long) x * (i + 1);
         }
         
         return result;
