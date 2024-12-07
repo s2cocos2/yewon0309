@@ -1,15 +1,21 @@
+import java.util.ArrayList;
 import java.util.Arrays;
 
-class Solution {
+public class Solution {
     public int[] solution(int[] arr) {
         if (arr.length == 1) {
-            return new int[] {-1};
+            return new int[] { -1 };
         }
 
         int min = Arrays.stream(arr).min().getAsInt();
 
-        return Arrays.stream(arr)
-                     .filter(num -> num != min)
-                     .toArray();
+        ArrayList<Integer> resultList = new ArrayList<>();
+        for (int num : arr) {
+            if (num != min) {
+                resultList.add(num);
+            }
+        }
+
+        return resultList.stream().mapToInt(i -> i).toArray();
     }
 }
