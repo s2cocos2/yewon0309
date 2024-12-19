@@ -1,24 +1,36 @@
-class Solution {
+import java.util.ArrayList;
+import java.util.List;
+
+public class Solution {
     public int solution(int[] nums) {
-        int answer = 0;
-
-        for(int i=0;i<nums.length;i++){
-            for(int j=i+1;j<nums.length;j++){
-                for(int k=j+1;k<nums.length;k++){
-                    int sum = nums[i] + nums[j] + nums[k];
-
-                    if(isPrime(sum)){
-                        answer++;
-                    }
-                }
+        List<Integer> combinations = new ArrayList<>();
+        combine(nums, 0, 3, 0, combinations);
+        
+        int count = 0;
+        for (int sum : combinations) {
+            if (isPrime(sum)) {
+                count++;
             }
         }
-
-        return answer;
+        return count;
     }
-        public static boolean isPrime(int n){
-        for(int i=2;i<=Math.sqrt(n);i++){
-            if(n % i == 0){
+
+    private void combine(int[] nums, int start, int r, int sum, List<Integer> combinations) {
+        if (r == 0) {
+            combinations.add(sum);
+            return;
+        }
+        for (int i = start; i < nums.length; i++) {
+            combine(nums, i + 1, r - 1, sum + nums[i], combinations);
+        }
+    }
+
+    private boolean isPrime(int num) {
+        if (num < 2) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
                 return false;
             }
         }
