@@ -1,19 +1,13 @@
-class Solution {
+public class Solution {
     public int solution(int[] num_list) {
-        int answer = 0;
-        int multi = 1;
         int sum = 0;
+        int product = 1;
 
-        for(int i=0;i<num_list.length;i++){
-            multi *= num_list[i];
-            sum += num_list[i];
+        for (int num : num_list) {
+            sum += num;
+            product *= num;
         }
 
-        if(multi < Math.pow(sum, 2)){
-            answer = 1;
-        } else {
-            answer = 0;
-        }
-        return answer;
+        return product < (sum * sum) ? 1 : 0;
     }
 }
