@@ -1,13 +1,14 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
-class Solution {
-    public int[] solution(int start_num, int end_num) {
-        List<Integer> list = new ArrayList<>();
-        for(int i=start_num;i<=end_num;i++){
-            list.add(i);
+public class Solution {
+    public List<Integer> solution(int start_num, int end_num) {
+        List<Integer> result = new ArrayList<>();
+
+        for (int i = start_num; i <= end_num; i++) {
+            result.add(i);
         }
 
-        int[] answer = list.stream().mapToInt(Integer::intValue).toArray();
-        return answer;
+        return result;
     }
 }
