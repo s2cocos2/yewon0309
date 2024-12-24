@@ -1,28 +1,22 @@
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.HashMap;
 
-class Solution {
+public class Solution {
     public int[] solution(String s) {
-        int[] answer = {};
-        String[] str = s.split("");
-        List<Integer> list = new ArrayList<>();
+        int[] result = new int[s.length()];
+        HashMap<Character, Integer> lastSeen = new HashMap<>();
 
-        for(int i=0;i<s.length();i++){
-            String f = s.substring(0, i);
-            if(!f.contains(str[i])){
-                list.add(-1);
+        for (int i = 0; i < s.length(); i++) {
+            char currentChar = s.charAt(i);
+
+            if (lastSeen.containsKey(currentChar)) {
+                result[i] = i - lastSeen.get(currentChar);
             } else {
-                for(int j=i-1;j>=0;j--){
-                    if(str[j].equals(str[i])){
-                        list.add(i-j);
-                        break;
-                    }
-                }
+                result[i] = -1;
             }
+
+            lastSeen.put(currentChar, i);
         }
 
-        answer = list.stream().mapToInt(Integer::intValue).toArray();
-        return answer;
+        return result;
     }
 }
