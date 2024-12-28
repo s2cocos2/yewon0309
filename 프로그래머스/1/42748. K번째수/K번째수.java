@@ -2,20 +2,16 @@ import java.util.Arrays;
 
 public class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        int[] result = new int[commands.length];
+        return Arrays.stream(commands)
+            .mapToInt(command -> {
+                int i = command[0];
+                int j = command[1];
+                int k = command[2];
 
-        for (int c = 0; c < commands.length; c++) {
-            int i = commands[c][0];
-            int j = commands[c][1];
-            int k = commands[c][2];
-            
-            int[] subArray = Arrays.copyOfRange(array, i - 1, j);
-
-            Arrays.sort(subArray);
-            
-            result[c] = subArray[k - 1];
-        }
-
-        return result;
+                return Arrays.stream(array, i - 1, j)
+                             .sorted()
+                             .toArray()[k - 1];
+            })
+            .toArray();
     }
 }
