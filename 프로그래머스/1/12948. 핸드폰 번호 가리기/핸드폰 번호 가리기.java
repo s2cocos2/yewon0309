@@ -1,11 +1,13 @@
 public class Solution {
     public String solution(String phone_number) {
-        int length = phone_number.length();
+        StringBuilder result = new StringBuilder();
 
-        String hiddenPart = "*".repeat(length - 4);
+        for (int i = 0; i < phone_number.length() - 4; i++) {
+            result.append('*');
+        }
 
-        String visiblePart = phone_number.substring(length - 4);
+        result.append(phone_number.substring(phone_number.length() - 4));
 
-        return hiddenPart + visiblePart;
+        return result.toString();
     }
 }
