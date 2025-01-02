@@ -1,15 +1,19 @@
+import java.util.Arrays;
+
 class Solution {
     public int solution(int n, int m, int[] section) {
         int answer = 0;
-        int i=0;
-        
-        while(i < section.length){
-            int current = section[i];
-            answer++;
-            while(i < section.length && section[i] < current + m){
-                i++;
+        int paintedUntil = 0;
+
+        for (int start : section) {
+            if (start <= paintedUntil) {
+                continue;
             }
+
+            paintedUntil = start + m - 1;
+            answer++;
         }
+
         return answer;
     }
 }
