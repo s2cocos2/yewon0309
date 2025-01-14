@@ -1,10 +1,10 @@
+import java.util.stream.IntStream;
+
 class Solution {
     public int solution(int n) {
-        for (int x = 2; x < n; x++) {
-            if (n % x == 1) {
-                return x;
-            }
-        }
-        return -1;
+        return IntStream.range(2, n)
+                        .filter(x -> n % x == 1)
+                        .findFirst()
+                        .orElse(-1);
     }
 }
