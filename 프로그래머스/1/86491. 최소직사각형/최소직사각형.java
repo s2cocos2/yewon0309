@@ -1,17 +1,17 @@
+import java.util.Arrays;
+
 class Solution {
     public int solution(int[][] sizes) {
-        int answer = 0;
-        int maxWidth = 0;
-        int maxLength = 0;
-        for(int i=0;i<sizes.length;i++){
-            int width = Math.max(sizes[i][0], sizes[i][1]);
-            int length = Math.min(sizes[i][0], sizes[i][1]);
+        int maxWidth = Arrays.stream(sizes)
+                             .mapToInt(size -> Math.max(size[0], size[1]))
+                             .max()
+                             .orElse(0);
 
-            maxWidth = Math.max(maxWidth, width);
-            maxLength = Math.max(maxLength, length);
-        }
+        int maxHeight = Arrays.stream(sizes)
+                              .mapToInt(size -> Math.min(size[0], size[1]))
+                              .max()
+                              .orElse(0);
 
-        answer = maxLength * maxWidth;
-        return answer;
+        return maxWidth * maxHeight;
     }
 }
