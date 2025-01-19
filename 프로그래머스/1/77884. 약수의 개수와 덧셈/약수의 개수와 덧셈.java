@@ -3,30 +3,18 @@ public class Solution {
         int answer = 0;
 
         for (int i = left; i <= right; i++) {
-            int divisorCount = getDivisorCount(i);
-
-            if (divisorCount % 2 == 0) {
-                answer += i;
-            } else {
+            if (isPerfectSquare(i)) {
                 answer -= i;
+            } else {
+                answer += i;
             }
         }
 
         return answer;
     }
 
-    private int getDivisorCount(int num) {
-        int count = 0;
-
-        for (int i = 1; i <= Math.sqrt(num); i++) {
-            if (num % i == 0) {
-                count++;
-                if (i != num / i) {
-                    count++;
-                }
-            }
-        }
-
-        return count;
+    private boolean isPerfectSquare(int num) {
+        int sqrt = (int) Math.sqrt(num);
+        return sqrt * sqrt == num;
     }
 }
