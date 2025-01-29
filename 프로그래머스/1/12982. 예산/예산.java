@@ -1,18 +1,19 @@
-import java.util.Arrays;
+import java.util.PriorityQueue;
 
 class Solution {
     public int solution(int[] d, int budget) {
-        int answer = 0;
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
         
-        Arrays.sort(d);
-        int sum = 0;
-        for(int i=0;i<d.length;i++){
-            budget -= d[i];
-            if(budget < 0){
-                break;
-            }
-            answer++;
+        for (int amount : d) {
+            pq.offer(amount);
         }
-        return answer;
+
+        int count = 0;
+        while (!pq.isEmpty() && budget >= pq.peek()) {
+            budget -= pq.poll();
+            count++;
+        }
+
+        return count;
     }
 }
