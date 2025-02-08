@@ -1,23 +1,12 @@
-import java.util.Arrays;
-
 class Solution {
     public int[] solution(int n, int m) {
-        int[] answer = new int[2];
         int gcd = gcd(n, m);
-        int lcm = n * m / gcd;
+        int lcm = (n / gcd) * m;
 
-        answer[0] = gcd;
-        answer[1] = lcm;
-        
-        return answer;
+        return new int[]{gcd, lcm};
     }
 
-    public static int gcd(int a, int b){
-        while ( b!=0){
-            int r = a % b;
-            a = b;
-            b = r;
-        }
-        return a;
+    private int gcd(int a, int b) {
+        return b == 0 ? a : gcd(b, a % b);
     }
 }
