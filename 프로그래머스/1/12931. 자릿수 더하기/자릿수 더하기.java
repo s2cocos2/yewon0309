@@ -1,12 +1,12 @@
 public class Solution {
     public int solution(int n) {
-        String number = String.valueOf(n);
-        int answer = 0;
-
-        for (char digit : number.toCharArray()) {
-            answer += Character.getNumericValue(digit);
+        int sum = 0;
+        
+        while (n > 0) {
+            sum += n % 10;
+            n /= 10;
         }
-
-        return answer;
+        
+        return sum;
     }
 }
