@@ -1,27 +1,31 @@
-import java.util.*;
-import java.util.stream.IntStream;
+import java.util.ArrayList;
+import java.util.List;
 
-class Solution {
+public class Solution {
     public int[] solution(int[] answers) {
-        int[][] patterns = {
-            {1, 2, 3, 4, 5},
-            {2, 1, 2, 3, 2, 4, 2, 5},
-            {3, 3, 1, 1, 2, 2, 4, 4, 5, 5}
-        };
+        int[] pattern1 = {1, 2, 3, 4, 5};
+        int[] pattern2 = {2, 1, 2, 3, 2, 4, 2, 5};
+        int[] pattern3 = {3, 3, 1, 1, 2, 2, 4, 4, 5, 5};
 
         int[] scores = new int[3];
-        for (int i = 0; i < patterns.length; i++) {
-            int[] pattern = patterns[i];
-            scores[i] = (int) IntStream.range(0, answers.length)
-                                       .filter(j -> answers[j] == pattern[j % pattern.length])
-                                       .count();
+
+        for (int i = 0; i < answers.length; i++) {
+            if (answers[i] == pattern1[i % pattern1.length]) scores[0]++;
+            if (answers[i] == pattern2[i % pattern2.length]) scores[1]++;
+            if (answers[i] == pattern3[i % pattern3.length]) scores[2]++;
         }
 
-        int maxScore = Arrays.stream(scores).max().orElse(0);
+        // 최고 점수 찾기
+        int maxScore = Math.max(scores[0], Math.max(scores[1], scores[2]));
 
-        return IntStream.range(0, scores.length)
-                        .filter(i -> scores[i] == maxScore)
-                        .map(i -> i + 1)
-                        .toArray();
+        // 최고 점수를 받은 사람 찾기
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i < scores.length; i++) {
+            if (scores[i] == maxScore) {
+                result.add(i + 1);
+            }
+        }
+
+        return result.stream().mapToInt(i -> i).toArray();
     }
 }
