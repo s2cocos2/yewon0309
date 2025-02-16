@@ -1,20 +1,23 @@
-import java.util.Arrays;
+import java.util.PriorityQueue;
 
 public class Solution {
     public int[] solution(int[] array, int[][] commands) {
-        int[] result = new int[commands.length]; 
+        int[] result = new int[commands.length];
 
         for (int index = 0; index < commands.length; index++) {
             int i = commands[index][0];
             int j = commands[index][1];
             int k = commands[index][2];
 
-            // array의 i번째부터 j번째까지 자르기
-            int[] subArray = Arrays.copyOfRange(array, i - 1, j);
+            PriorityQueue<Integer> minHeap = new PriorityQueue<>();
 
-            Arrays.sort(subArray);
+            for (int x = i - 1; x < j; x++) {
+                minHeap.add(array[x]);
+            }
 
-            result[index] = subArray[k - 1];
+            for (int count = 0; count < k; count++) {
+                result[index] = minHeap.poll();
+            }
         }
 
         return result;
