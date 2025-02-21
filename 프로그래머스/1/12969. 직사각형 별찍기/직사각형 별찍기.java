@@ -7,14 +7,11 @@ class Solution {
         int m = sc.nextInt();
         sc.close();
 
-        StringBuilder sb = new StringBuilder();
-        
-        String row = "*".repeat(n);
-
         for (int i = 0; i < m; i++) {
-            sb.append(row).append("\n");
+            for (int j = 0; j < n; j++) {
+                System.out.print("*");
+            }
+            System.out.println();
         }
-
-        System.out.print(sb.toString());
     }
 }
