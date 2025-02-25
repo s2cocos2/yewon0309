@@ -1,11 +1,12 @@
-class Solution {
+public class Solution {
     public boolean solution(int x) {
         int sumOfDigits = 0;
+        int original = x;
         
-        for (char c : String.valueOf(x).toCharArray()) {
-            sumOfDigits += c - '0';
+        while (x > 0) {
+            sumOfDigits += x % 10;
+            x /= 10;
         }
-        
-        return x % sumOfDigits == 0;
+        return original % sumOfDigits == 0;
     }
 }
