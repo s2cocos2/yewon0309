@@ -1,15 +1,16 @@
 public class Solution {
     public int solution(long num) {
-        return collatz(num, 0);
-    }
-
-    public int collatz(long num, int count) {
-        if (num == 1) {
-            return count;
+        int count = 0;
+        
+        while (num != 1) {
+            if (count >= 500) {
+                return -1;
+            }
+            
+            num = (num % 2 == 0) ? num / 2 : num * 3 + 1;
+            count++;
         }
-        if (count >= 500) {
-            return -1;
-        }
-        return collatz(num % 2 == 0 ? num / 2 : num * 3 + 1, count + 1);
+        
+        return count;
     }
 }
