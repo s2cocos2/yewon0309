@@ -1,12 +1,17 @@
-class Solution {
+public class Solution {
     public int[] solution(int n, int m) {
-        int gcd = gcd(n, m);
-        int lcm = (n / gcd) * m;
+        int gcd = getGCD(n, m);
+        int lcm = (n * m) / gcd;
 
         return new int[]{gcd, lcm};
     }
 
-    private int gcd(int a, int b) {
-        return b == 0 ? a : gcd(b, a % b);
+    private int getGCD(int a, int b) {
+        while (b != 0) {
+            int temp = b;
+            b = a % b;
+            a = temp;
+        }
+        return a;
     }
 }
