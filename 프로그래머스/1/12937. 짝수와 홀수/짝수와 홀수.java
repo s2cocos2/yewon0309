@@ -1,5 +1,5 @@
-class Solution {
+public class Solution {
     public String solution(int num) {
-        return (num % 2 == 0) ? "Even" : "Odd";
+        return ((num & 1) == 0) ? "Even" : "Odd";
     }
 }
