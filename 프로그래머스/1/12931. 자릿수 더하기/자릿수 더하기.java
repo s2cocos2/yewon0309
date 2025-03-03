@@ -1,12 +1,9 @@
-public class Solution {
+import java.util.stream.Stream;
+
+class Solution {
     public int solution(int n) {
-        int sum = 0;
-        
-        while (n > 0) {
-            sum += n % 10;
-            n /= 10;
-        }
-        
-        return sum;
+        return Stream.of(String.valueOf(n).split(""))
+                     .mapToInt(Integer::parseInt)
+                     .sum();
     }
 }
