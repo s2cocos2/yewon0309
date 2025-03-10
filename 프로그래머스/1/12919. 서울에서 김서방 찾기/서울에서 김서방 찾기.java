@@ -1,16 +1,8 @@
-public class Solution {
+import java.util.Arrays;
+
+class Solution {
     public String solution(String[] seoul) {
-        int index = -1;
-        int i = 0;
-        
-        for (String name : seoul) {
-            if (name.equals("Kim")) {
-                index = i;
-                break;
-            }
-            i++;
-        }
-        
-        return "김서방은 " + index + "에 있다";
+        int index = Arrays.asList(seoul).indexOf("Kim");
+        return String.format("김서방은 %d에 있다", index);
     }
 }
