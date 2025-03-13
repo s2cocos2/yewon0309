@@ -1,15 +1,7 @@
-public class Solution {
+class Solution {
     boolean solution(String s) {
-        int pCount = 0;
-        int yCount = 0;
-        for (char ch : s.toLowerCase().toCharArray()) {
-            if (ch == 'p') {
-                pCount++;
-            } else if (ch == 'y') {
-                yCount++;
-            }
-        }
-
+        long pCount = s.chars().filter(c -> c == 'p' || c == 'P').count();
+        long yCount = s.chars().filter(c -> c == 'y' || c == 'Y').count();
         return pCount == yCount;
     }
 }
