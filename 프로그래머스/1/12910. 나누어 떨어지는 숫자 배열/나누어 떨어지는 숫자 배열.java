@@ -1,22 +1,25 @@
-import java.util.ArrayList;
-import java.util.Collections;
+import java.util.PriorityQueue;
 
 class Solution {
     public int[] solution(int[] arr, int divisor) {
-        ArrayList<Integer> result = new ArrayList<>();
-        
+        PriorityQueue<Integer> pq = new PriorityQueue<>();
+
         for (int num : arr) {
             if (num % divisor == 0) {
-                result.add(num);
+                pq.offer(num);
             }
         }
-        
-        if (result.isEmpty()) {
+
+        if (pq.isEmpty()) {
             return new int[]{-1};
         }
-        
-        Collections.sort(result);
-        
-        return result.stream().mapToInt(Integer::intValue).toArray();
+
+        int[] result = new int[pq.size()];
+        int index = 0;
+        while (!pq.isEmpty()) {
+            result[index++] = pq.poll();
+        }
+
+        return result;
     }
 }
