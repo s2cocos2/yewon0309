@@ -3,19 +3,18 @@ import java.util.Scanner;
 public class Solution {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        String a = sc.next();
-        String answer = "";
-        for(int i=0;i<a.length();i++){
-            char c = a.charAt(i);
-            if(Character.isUpperCase(c)){
-                c = Character.toLowerCase(c);
-                answer += c;
+        String str = sc.next();
+        
+        StringBuilder sb = new StringBuilder();
+        for(int i=0;i<str.length();i++){
+            char c = str.charAt(i);
+            if(Character.isLowerCase(c)){
+                sb.append(Character.toUpperCase(c));
             } else {
-                c = Character.toUpperCase(c);
-                answer += c;
+                sb.append(Character.toLowerCase(c));
             }
         }
         
-        System.out.println(answer);
+        System.out.print(sb.toString());
     }
 }
