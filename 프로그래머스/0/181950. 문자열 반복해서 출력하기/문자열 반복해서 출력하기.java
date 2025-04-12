@@ -6,10 +6,13 @@ public class Solution {
         String str = sc.next();
         int n = sc.nextInt();
         
-        String answer = "";
+        StringBuilder sb = new StringBuilder();
         for(int i=0;i<n;i++){
-            answer += str;
+            sb.append(str);
         }
-        System.out.println(answer);
+        
+        System.out.print(sb.toString());
+        
+        
     }
 }
